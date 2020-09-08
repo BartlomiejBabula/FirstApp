@@ -1,0 +1,43 @@
+version: '3'
+services:
+  backend:
+    container_name: backend
+    build: ./backend
+    expose:
+      - 8000
+    volumes: 
+      - ./backend:/home/app/backend
+      - static_volume:/home/app/backend/staticfiles
+      - media_volume:/home/app/backend/media
+    command: [ 'nodemon', './index.js']
+    env_file:
+      - ./.env.dev
+    depends_on:
+      - db
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend/public:/var/www
+      - static_volume:/home/app/backend/staticfiles
+      - media_volume:/home/app/backend/media
+    depends_on:
+      - backend
+    logging: 
+        driver: none
+    command: [nginx, '-g', 'daemon off;']
+  db:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: m220-user
+      ME_CONFIG_MONGODB_ADMINPASSWORD: m220-pass
+volumes:
+  mongo_data:
+  media_volume:
+  static_volume:

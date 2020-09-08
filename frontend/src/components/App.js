@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+// import "./App.css";
 import LoginPanel from "./LoginPanel";
 import MoodTracker from "./MoodTracker";
 import SigIn from "./SigIn";
