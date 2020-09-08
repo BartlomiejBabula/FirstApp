@@ -1,23 +1,26 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import React from "react";
+// import "./App.css";
+import LoginPanel from "./LoginPanel";
+import MoodTracker from "./MoodTracker";
+import SigIn from "./SigIn";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
-function App() {
-  useEffect(() => {
-    axios
-      .get("http://localhost/api")
-      .then((res) => {
-        console.log("POLACZONE", res.body);
-      })
-      .catch(() => {
-        console.log("ERRRRR");
-      });
-  });
+class App extends React.Component {
+  state = {
+    access: false,
+  };
 
-  return (
-    <>
-      <p>QUPA OLE</p>
-    </>
-  );
+  render() {
+    return (
+      <div className="App">
+        <Router>
+          <Route path="/" exact component={LoginPanel} />
+          <Route path="/homepage" component={MoodTracker} />
+          <Route path="/sigin" component={SigIn} />
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

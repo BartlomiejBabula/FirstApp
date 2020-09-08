@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./LoginPanel.css";
+import axios from "axios";
 import { BrowserRouter as Router, withRouter } from "react-router-dom";
 
 class LoginPanel extends Component {
@@ -8,6 +8,17 @@ class LoginPanel extends Component {
     loginValue: "",
     access: false,
   };
+
+  componentDidMount() {
+    axios
+      .get("/api")
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   baza = [
     {
