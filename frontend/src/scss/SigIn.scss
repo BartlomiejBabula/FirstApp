@@ -1,0 +1,33 @@
+.sigin {
+  min-width: 20%;
+  min-height: 30vh;
+  align-self: center;
+  text-align: center;
+  border: 3px inset #148b10;
+  border-radius: 55px;
+  h2 {
+    margin: 20px 0;
+  }
+  .input-wrap {
+    margin: 5px;
+  }
+  button {
+    margin: 17px 5px;
+    border: 3px inset #148b10;
+    border-radius: 15px;
+    padding: 5px 15px;
+    background: none;
+    cursor: pointer;
+  }
+
+  .form-message {
+    font-size: 10px;
+    padding-top: 2px;
+  }
+  .form-message.valid {
+    color: #4caf50;
+  }
+  .form-message.invalid {
+    color: #f44336;
+  }
+}

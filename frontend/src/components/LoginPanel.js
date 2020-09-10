@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, withRouter } from "react-router-dom";
+import "../scss/LoginPanel.scss";
 
 class LoginPanel extends Component {
   state = {
@@ -8,17 +9,6 @@ class LoginPanel extends Component {
     loginValue: "",
     access: false,
   };
-
-  componentDidMount() {
-    axios
-      .get("/api")
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
   baza = [
     {
@@ -57,6 +47,10 @@ class LoginPanel extends Component {
     });
   };
 
+  handleSigin = () => {
+    this.props.history.push("/sigin");
+  };
+
   render() {
     return (
       <>
@@ -75,7 +69,7 @@ class LoginPanel extends Component {
             onChange={this.handleChange}
           />
           <button onClick={this.handleLogin}>Login Now</button>
-          <button>Create new account</button>
+          <button onClick={this.handleSigin}>Create new account</button>
         </div>
       </>
     );
