@@ -1,15 +1,17 @@
 require("dotenv").config();
-const express = require("express");
+import cors, { CorsOptions } from 'cors';
+import express from 'express';
+import mongoose from 'mongoose';
+import router from './urls';
+
 const app = express();
 const port = process.env.PORT;
-const mongoose = require("mongoose");
-const cors = require("cors");
 
 const corsWhitelist = ["http://localhost", "http://api.localhost"];
-var corsOptions = {
+
+var corsOptions: CorsOptions = {
   origin: function (origin, callback) {
-    console.log("origin", origin);
-    if (corsWhitelist.indexOf(origin) !== -1) {
+    if (origin && corsWhitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
@@ -18,6 +20,7 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(router);
 
 mongoose
   .connect(`mongodb://db:27017`, {
@@ -31,7 +34,7 @@ mongoose
 
 app.get("/", (req, res) => {
   res.setHeader("Content-Type", "application/json");
-  res.end(JSON.stringify({ a: 1 }));
+  res.end(JSON.stringify({ a: 2 }));
 });
 
 app.listen(port, () => {
