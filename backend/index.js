@@ -3,6 +3,21 @@ const express = require("express");
 const app = express();
 const port = process.env.PORT;
 const mongoose = require("mongoose");
+const cors = require("cors");
+
+const corsWhitelist = ["http://localhost", "http://api.localhost"];
+var corsOptions = {
+  origin: function (origin, callback) {
+    console.log("origin", origin);
+    if (corsWhitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+
+app.use(cors(corsOptions));
 
 mongoose
   .connect(`mongodb://db:27017`, {
