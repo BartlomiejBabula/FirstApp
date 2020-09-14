@@ -35,30 +35,29 @@
     background: none;
     cursor: pointer; }
 
-.sigin {
+.sigIn {
   min-width: 20%;
   min-height: 30vh;
   align-self: center;
   text-align: center;
   border: 3px inset #148b10;
   border-radius: 55px; }
-  .sigin h2 {
+  .sigIn h2 {
     margin: 20px 0; }
-  .sigin .input-wrap {
-    margin: 5px; }
-  .sigin button {
+  .sigIn button {
     margin: 17px 5px;
     border: 3px inset #148b10;
     border-radius: 15px;
     padding: 5px 15px;
     background: none;
     cursor: pointer; }
-  .sigin .form-message {
+  .sigIn .formMessageValid {
+    color: #4caf50;
     font-size: 10px;
     padding-top: 2px; }
-  .sigin .form-message.valid {
-    color: #4caf50; }
-  .sigin .form-message.invalid {
-    color: #f44336; }
+  .sigIn .formMessageInvalid {
+    color: #f44336;
+    font-size: 10px;
+    padding-top: 2px; }
 
 

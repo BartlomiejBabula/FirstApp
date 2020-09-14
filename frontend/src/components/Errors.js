@@ -2,12 +2,12 @@ import React from "react";
 
 const Errors = ({ touched, message }) => {
   if (!touched) {
-    return <div className="form-message invalid">&nbsp;</div>;
+    return <div className="formMessageInvalid">&nbsp;</div>;
   }
   if (message) {
-    return <div className="form-message invalid">{message}</div>;
+    return <div className="formMessageInvalid">{message}</div>;
   }
-  return <div className="form-message valid">Poprawny </div>;
+  return <div className="formMessageValid">Poprawny </div>;
 };
 
 export default Errors;
