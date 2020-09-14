@@ -29,15 +29,13 @@ const validationSchema = Yup.object().shape({
 
 const SigIn = () => {
   return (
-    <div className="sigin">
+    <div className="sigIn">
       <h2>Create your account</h2>
       <Formik
         initialValues={{ name: "", email: "", password: "", accept: false }}
         validationSchema={validationSchema}
         onSubmit={(values) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-          }, 500);
+          alert(JSON.stringify(values, null, 2));
         }}
       >
         {({
@@ -49,7 +47,7 @@ const SigIn = () => {
           handleSubmit,
         }) => (
           <form onSubmit={handleSubmit}>
-            <div className="input-wrap">
+            <div className="nameWrap">
               <label htmlFor="name">Imię</label>
               <input
                 type="text"
@@ -63,7 +61,7 @@ const SigIn = () => {
               <Errors touched={touched.name} message={errors.name} />
             </div>
 
-            <div className="input-wrap">
+            <div className="emailWrap">
               <label htmlFor="email">Email</label>
               <input
                 type="email"
@@ -77,7 +75,7 @@ const SigIn = () => {
               <Errors touched={touched.email} message={errors.email} />
             </div>
 
-            <div className="input-wrap">
+            <div className="passwordWrap">
               <label htmlFor="password">Hasło</label>
               <input
                 type="password"
@@ -91,7 +89,7 @@ const SigIn = () => {
               <Errors touched={touched.password} message={errors.password} />
             </div>
 
-            <div className="input-wrap">
+            <div className="checkPasswordWrap">
               <label htmlFor="confirmPassword">Powtórz hasło</label>
               <input
                 type="password"
@@ -108,7 +106,7 @@ const SigIn = () => {
               />
             </div>
 
-            <div className="input-wrap">
+            <div className="acceptWrap">
               <label htmlFor="accept">
                 <input
                   type="checkbox"
@@ -123,7 +121,7 @@ const SigIn = () => {
               <Errors touched={touched.accept} message={errors.accept} />
             </div>
 
-            <div className="input-wrap">
+            <div className="buttonWrap">
               <button type="submit">Wyślij</button>
               <button type="reset">Resetuj</button>
             </div>

@@ -10,6 +10,8 @@ node_modules
 
 # production
 /build
+/frontend/public/*
+
 
 # misc
 .DS_Store
@@ -23,3 +25,5 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
+
+
