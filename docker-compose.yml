@@ -9,7 +9,7 @@ services:
       - ./backend:/home/app/backend
       - static_volume:/home/app/backend/staticfiles
       - media_volume:/home/app/backend/media
-    command: [ 'nodemon', './index.js']
+    command: ['npm', 'start']
     env_file:
       - ./.env.dev
     depends_on:
