@@ -1,9 +1,36 @@
 import React from "react";
 import { Formik } from "formik";
+import InputFormik from "./InputFormik";
 import Errors from "./Errors";
 import "../scss/SigIn.scss";
 import * as Yup from "yup";
-
+const formikImput = [
+  {
+    type: "text",
+    name: "name",
+    placeholder: "Wpisz imię",
+  },
+  {
+    type: "email",
+    name: "email",
+    placeholder: "Wpisz email",
+  },
+  {
+    type: "password",
+    name: "password",
+    placeholder: "Wpisz hasło",
+  },
+  {
+    type: "password",
+    name: "confirmPassword",
+    placeholder: "Potwierdź hasło",
+  },
+  {
+    type: "checkbox",
+    name: "accept",
+    label: "Akceptuj regulamin",
+  },
+];
 const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Musi być dłuższe niż 3 znaki")
@@ -47,79 +74,19 @@ const SigIn = () => {
           handleSubmit,
         }) => (
           <form onSubmit={handleSubmit}>
-            <div className="nameWrap">
-              <label htmlFor="name">Imię</label>
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Wpisz imię"
-                onChange={handleChange}
+            {formikImput.map(({ type, name, placeholder, label }) => (
+              <InputFormik
+                type={type}
+                name={name}
+                placeholder={placeholder}
+                handleChange={handleChange}
                 onBlur={handleBlur}
-                values={values.name}
+                value={values[name]}
+                touched={touched[name]}
+                error={errors[name]}
+                label={label}
               />
-              <Errors touched={touched.name} message={errors.name} />
-            </div>
-
-            <div className="emailWrap">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="Wpisz email"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                values={values.email}
-              />
-              <Errors touched={touched.email} message={errors.email} />
-            </div>
-
-            <div className="passwordWrap">
-              <label htmlFor="password">Hasło</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Wpisz hasło"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                values={values.password}
-              />
-              <Errors touched={touched.password} message={errors.password} />
-            </div>
-
-            <div className="checkPasswordWrap">
-              <label htmlFor="confirmPassword">Powtórz hasło</label>
-              <input
-                type="password"
-                name="confirmPassword"
-                id="confirmPassword"
-                placeholder="Potwierdź hasło"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                values={values.password}
-              />
-              <Errors
-                touched={touched.confirmPassword}
-                message={errors.confirmPassword}
-              />
-            </div>
-
-            <div className="acceptWrap">
-              <label htmlFor="accept">
-                <input
-                  type="checkbox"
-                  name="accept"
-                  id="accept"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  checked={values.accept}
-                />
-                Akceptuje regulamin
-              </label>
-              <Errors touched={touched.accept} message={errors.accept} />
-            </div>
+            ))}
 
             <div className="buttonWrap">
               <button type="submit">Wyślij</button>
