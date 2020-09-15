@@ -1,12 +1,11 @@
 .App {
   font-family: "Lato", sans-serif;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-
   min-width: 100%;
   min-height: 100%;
   h1 {
     text-align: center;
   }
+}
+.blur {
+  filter: blur(5px);
 }

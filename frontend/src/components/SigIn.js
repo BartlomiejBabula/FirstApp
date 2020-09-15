@@ -76,6 +76,7 @@ const SigIn = () => {
           <form onSubmit={handleSubmit}>
             {formikImput.map(({ type, name, placeholder, label }) => (
               <InputFormik
+                key={name}
                 type={type}
                 name={name}
                 placeholder={placeholder}

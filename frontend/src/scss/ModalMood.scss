@@ -1,0 +1,33 @@
+.modal {
+  button {
+    width: 60px;
+    height: 60px;
+    background-color: #f2be22;
+    border-radius: 50%;
+    border-color: black;
+    font-size: 40px;
+    color: #f0eae7;
+    text-align: center;
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    transition: all 0.5s ease-in-out;
+    z-index: 2;
+  }
+  button:hover {
+    box-shadow: 0 3px 10px 0 #666;
+    transform: scale(1.05);
+    transform: rotate(180deg);
+  }
+  .modalON {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 87vw;
+    height: 92vh;
+    background-color: rgb(85, 113, 206);
+    z-index: 1;
+    transition: all 1s ease-in-out;
+  }
+}

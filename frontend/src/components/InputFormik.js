@@ -9,10 +9,8 @@ const ImputFormik = ({
   onBlur,
   touched,
   error,
-  value,
   label,
 }) => {
-  console.log(type);
   return (
     <div className="InputWrap">
       <label>
@@ -24,7 +22,6 @@ const ImputFormik = ({
           placeholder={placeholder}
           onChange={handleChange}
           onBlur={onBlur}
-          values={value}
         />
       </label>
       <Errors touched={touched} message={error} />
@@ -33,3 +30,5 @@ const ImputFormik = ({
 };
 
 export default ImputFormik;
+
+//przycisk + na dole ekranu prawej stronie, widoczny po zalogowaniu, na każdym ekranie, otwiera popou formularz, godzina, nazwa aktwynosci, samopoczucie skala 1-10, commit,
