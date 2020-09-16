@@ -25,6 +25,7 @@ const ImputFormik = ({
         />
       </label>
       <Errors touched={touched} message={error} />
+      {console.log(touched, error)}
     </div>
   );
 };

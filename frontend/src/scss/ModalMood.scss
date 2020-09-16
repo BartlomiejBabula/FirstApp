@@ -1,5 +1,14 @@
 .modal {
+  text-align: center;
+  font-family: "Lato", sans-serif;
   button {
+    margin: 17px 5px;
+    border-radius: 15px;
+    padding: 5px 15px;
+    background: white;
+    cursor: pointer;
+  }
+  .modalButton {
     width: 60px;
     height: 60px;
     background-color: #f2be22;
@@ -14,7 +23,7 @@
     transition: all 0.5s ease-in-out;
     z-index: 2;
   }
-  button:hover {
+  .modalButton:hover {
     box-shadow: 0 3px 10px 0 #666;
     transform: scale(1.05);
     transform: rotate(180deg);
@@ -25,9 +34,21 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 87vw;
-    height: 92vh;
+    height: 89vh;
     background-color: rgb(85, 113, 206);
+    color: wheat;
     z-index: 1;
     transition: all 1s ease-in-out;
+  }
+
+  .formMessageValid {
+    color: #000000;
+    font-size: 12px;
+    padding-top: 2px;
+  }
+  .formMessageInvalid {
+    color: black;
+    font-size: 12px;
+    padding-top: 2px;
   }
 }
