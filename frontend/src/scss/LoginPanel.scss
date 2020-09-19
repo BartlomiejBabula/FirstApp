@@ -1,0 +1,26 @@
+.loginPanel {
+  text-align: center;
+
+  h2 {
+    margin-bottom: 65px;
+  }
+
+  input {
+    display: block;
+    position: relative;
+    padding: 5px 10px;
+    border-radius: 15px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 3%;
+    font-size: x-large;
+  }
+
+  button {
+    margin: 17px 5px;
+    border-radius: 15px;
+    padding: 5px 15px;
+    background: none;
+    cursor: pointer;
+  }
+}

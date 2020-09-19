@@ -10,6 +10,8 @@ node_modules
 
 # production
 /build
+frontend/public/*
+
 
 # misc
 .DS_Store
@@ -25,3 +27,4 @@ yarn-error.log*
 .vscode
 
 /backend/build/*
+
