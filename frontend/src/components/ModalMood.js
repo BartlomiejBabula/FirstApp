@@ -84,13 +84,11 @@ const MoodalMood = ({ handleClick, modalOn, actualDate, actualTime }) => {
                 <div className="inputWrap">
                   <label htmlFor="selectMood"></label>
                   <Field as="select" name="selectMood">
-                    {dropdownOptions.map((select, i) => {
-                      return (
-                        <option value={select.value} key={i}>
-                          {select.label}
-                        </option>
-                      );
-                    })}
+                    {dropdownOptions.map((select, i) => (
+                      <option value={select.value} key={i}>
+                        {select.label}
+                      </option>
+                    ))}
                   </Field>
                   <Errors
                     touched={touched.selectMood}
