@@ -1,16 +1,26 @@
 import React, { Component } from "react";
 import Errors from "./Errors";
 import "../scss/ModalMood.scss";
-import { Formik } from "formik";
+import { Formik, Field } from "formik";
 import * as Yup from "yup";
+import InputFormik from "./InputFormik";
 
 const validationSchema = Yup.object().shape({
   activity: Yup.string()
     .min(3, "Aktywność musi być dłuższe niż 3 znaki")
     .max(100, "Aktywność musi być krótsze niż 100 znaków")
     .required("Wprowadź aktywność"),
-  endTime: Yup.string().required("Wybierz date").nullable(),
+  time: Yup.string().required("Wybierz godzine").nullable(),
+  selectMood: Yup.string().required("Wybierz nastrój"),
 });
+
+const dropdownOptions = [
+  { key: "Wybierz nastrój", value: "" },
+  { key: "happy", value: "happy" },
+  { key: "good", value: "good" },
+  { key: "normal", value: "normal" },
+  { key: "sad", value: "sad" },
+];
 
 const MoodalMood = ({ handleClick, modalOn, actualDate, actualTime }) => {
   return (
@@ -25,13 +35,13 @@ const MoodalMood = ({ handleClick, modalOn, actualDate, actualTime }) => {
             initialValues={{
               activity: "",
               date: actualDate,
-              startTime: actualTime,
-              endTime: "",
+              time: "",
+              selectMood: "",
             }}
             validationSchema={validationSchema}
             onSubmit={(values, { resetForm }) => {
               alert(JSON.stringify(values, null, 2));
-              resetForm({ activity: "" });
+              resetForm({ activity: "", time: "", selectMood: "" });
             }}
           >
             {({
@@ -44,32 +54,17 @@ const MoodalMood = ({ handleClick, modalOn, actualDate, actualTime }) => {
             }) => (
               <form onSubmit={handleSubmit}>
                 <div className="inputWrap">
-                  <label htmlFor="startTime">Od </label>
+                  <label htmlFor="time"></label>
                   <input
                     type="time"
-                    name="startTime"
-                    id="startTime"
+                    name="time"
+                    id="time"
                     placeholder={actualTime}
-                    value={values.startTime}
+                    value={values.time}
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                  <Errors
-                    touched={touched.startTime}
-                    message={errors.startTime}
-                  />
-                </div>
-                <div className="inputWrap">
-                  <label htmlFor="endTime">Do </label>
-                  <input
-                    type="time"
-                    name="endTime"
-                    id="endTime"
-                    value={values.endTime}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                  />
-                  <Errors touched={touched.endTime} message={errors.endTime} />
+                  <Errors touched={touched.time} message={errors.time} />
                 </div>
                 <div className="inputWrap">
                   <label htmlFor="date"></label>
@@ -85,6 +80,22 @@ const MoodalMood = ({ handleClick, modalOn, actualDate, actualTime }) => {
                     onBlur={handleBlur}
                   />
                   <Errors touched={touched.date} message={errors.date} />
+                </div>
+                <div className="inputWrap">
+                  <label htmlFor="selectMood"></label>
+                  <Field as="select" name="selectMood">
+                    {dropdownOptions.map((select) => {
+                      return (
+                        <option value={select.value} key={select.key}>
+                          {select.key}
+                        </option>
+                      );
+                    })}
+                  </Field>
+                  <Errors
+                    touched={touched.selectMood}
+                    message={errors.selectMood}
+                  />
                 </div>
                 <div className="inputWrap">
                   <label htmlFor="activity">
