@@ -30,5 +30,3 @@ const ImputFormik = ({
 };
 
 export default ImputFormik;
-
-//przycisk + na dole ekranu prawej stronie, widoczny po zalogowaniu, na każdym ekranie, otwiera popou formularz, godzina, nazwa aktwynosci, samopoczucie skala 1-10, commit,

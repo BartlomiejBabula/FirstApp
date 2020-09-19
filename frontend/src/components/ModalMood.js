@@ -15,11 +15,11 @@ const validationSchema = Yup.object().shape({
 });
 
 const dropdownOptions = [
-  { key: "Wybierz nastrój", value: "" },
-  { key: "happy", value: "happy" },
-  { key: "good", value: "good" },
-  { key: "normal", value: "normal" },
-  { key: "sad", value: "sad" },
+  { label: "Wybierz nastrój", value: "" },
+  { label: "happy", value: "happy" },
+  { label: "good", value: "good" },
+  { label: "normal", value: "normal" },
+  { label: "sad", value: "sad" },
 ];
 
 const MoodalMood = ({ handleClick, modalOn, actualDate, actualTime }) => {
@@ -28,7 +28,7 @@ const MoodalMood = ({ handleClick, modalOn, actualDate, actualTime }) => {
       <button className="modalButton" onClick={handleClick}>
         X
       </button>
-      {modalOn ? (
+      {modalOn && (
         <div className="modalON">
           <h2>Dodaj nastrój</h2>
           <Formik
@@ -84,10 +84,10 @@ const MoodalMood = ({ handleClick, modalOn, actualDate, actualTime }) => {
                 <div className="inputWrap">
                   <label htmlFor="selectMood"></label>
                   <Field as="select" name="selectMood">
-                    {dropdownOptions.map((select) => {
+                    {dropdownOptions.map((select, i) => {
                       return (
-                        <option value={select.value} key={select.key}>
-                          {select.key}
+                        <option value={select.value} key={i}>
+                          {select.label}
                         </option>
                       );
                     })}
@@ -121,8 +121,6 @@ const MoodalMood = ({ handleClick, modalOn, actualDate, actualTime }) => {
             )}
           </Formik>
         </div>
-      ) : (
-        false
       )}
     </div>
   );

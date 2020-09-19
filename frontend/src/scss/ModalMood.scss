@@ -1,6 +1,7 @@
 .modal {
   text-align: center;
   font-family: "Lato", sans-serif;
+
   button {
     margin: 17px 5px;
     border-radius: 15px;
@@ -8,6 +9,7 @@
     background: white;
     cursor: pointer;
   }
+
   .modalButton {
     width: 60px;
     height: 60px;
@@ -23,11 +25,13 @@
     transition: all 0.5s ease-in-out;
     z-index: 2;
   }
+
   .modalButton:hover {
     box-shadow: 0 3px 10px 0 #666;
     transform: scale(1.05);
     transform: rotate(180deg);
   }
+
   .modalON {
     position: fixed;
     top: 50%;
@@ -41,13 +45,8 @@
     transition: all 1s ease-in-out;
   }
 
-  .formMessageValid {
-    color: #000000;
-    font-size: 12px;
-    padding-top: 2px;
-  }
-  .formMessageInvalid {
-    color: black;
+  .formMessage {
+    color: #f7f7f7;
     font-size: 12px;
     padding-top: 2px;
   }

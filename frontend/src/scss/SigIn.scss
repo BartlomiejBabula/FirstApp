@@ -1,8 +1,10 @@
 .sigIn {
   text-align: center;
+
   h2 {
     margin: 20px 0;
   }
+
   button {
     margin: 17px 5px;
     border-radius: 15px;
@@ -11,14 +13,9 @@
     cursor: pointer;
   }
 
-  .formMessageValid {
-    color: #4caf50;
-    font-size: 10px;
-    padding-top: 2px;
-  }
-  .formMessageInvalid {
-    color: #f44336;
-    font-size: 10px;
+  .formMessage {
+    color: #d63434;
+    font-size: 12px;
     padding-top: 2px;
   }
 }

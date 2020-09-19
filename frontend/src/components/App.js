@@ -5,13 +5,14 @@ import MoodTracker from "./MoodTracker";
 import SigIn from "./SigIn";
 import MoodalMood from "./ModalMood";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import moment from "moment";
 
 class App extends React.Component {
   state = {
     access: true,
     modalOn: false,
-    date: new Date().toISOString().slice(0, 10),
-    time: new Date().toISOString().slice(11, 16),
+    date: moment().format("YYYY-MM-DD"),
+    time: moment().format("HH:mm"),
   };
 
   handleClick = () => {
@@ -30,15 +31,13 @@ class App extends React.Component {
             <Route path="/sigin" component={SigIn} />
           </Router>
         </div>
-        {this.state.access ? (
+        {this.state.access && (
           <MoodalMood
             handleClick={this.handleClick}
             modalOn={this.state.modalOn}
             actualDate={this.state.date}
             actualTime={this.state.time}
           />
-        ) : (
-          false
         )}
       </>
     );

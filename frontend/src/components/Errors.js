@@ -1,13 +1,7 @@
 import React from "react";
 
-const Errors = ({ touched, message }) => {
-  if (!touched) {
-    return <div className="formMessageInvalid">&nbsp;</div>;
-  }
-  if (message) {
-    return <div className="formMessageInvalid">{message}</div>;
-  }
-  return <div className="formMessageValid"></div>;
-};
+const Errors = ({ touched, message }) => (
+  <div className="formMessage">{message && touched ? message : "\xA0"}</div>
+);
 
 export default Errors;
