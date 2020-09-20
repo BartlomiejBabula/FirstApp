@@ -1,0 +1,21 @@
+.sigIn {
+  text-align: center;
+
+  h2 {
+    margin: 20px 0;
+  }
+
+  button {
+    margin: 17px 5px;
+    border-radius: 15px;
+    padding: 5px 15px;
+    background: none;
+    cursor: pointer;
+  }
+
+  .formMessage {
+    color: #d63434;
+    font-size: 12px;
+    padding-top: 2px;
+  }
+}
