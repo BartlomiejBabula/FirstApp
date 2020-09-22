@@ -18,13 +18,7 @@ const port = process.env.PORT;
 const corsWhitelist = ["https://siemanko", "https://api.siemanko"];
 
 var corsOptions: CorsOptions = {
-  origin: function (origin, callback) {
-    if (origin && corsWhitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: 'https://siemanko',
   credentials: true,
   preflightContinue: true,
 };

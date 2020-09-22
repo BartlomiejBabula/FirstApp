@@ -16,12 +16,10 @@ export class AuthController {
         user.password = password;
         user.name = name;
 
-
         try {
             const token = await user.generateToken();
             const userCreated = await user.save();
-            res.cookie('jwt', token, { httpOnly: true, sameSite: 'none', secure: true });
-            res.send({user:userCreated, token })
+            res.send({user: userCreated, token })
         } catch (error) {
             res.send(error.message)
         }
@@ -34,7 +32,6 @@ export class AuthController {
             const user = await User.getByCredentials(email, password);
             if (!user) throw new Error('User not Found!')
             const token = await user.generateToken();
-            res.cookie('jwt', token, { httpOnly: true, sameSite: 'none', secure: true });
             res.send({user, token});
         } catch (error) {
             res.status(400).send(error.message);
@@ -48,7 +45,6 @@ export class AuthController {
             if (!req.user) throw new Error();
             req.user.tokens = req.user?.tokens.filter(el => el.token !== req.token);
             await req.user.save();
-            res.clearCookie('jwt');
             res.status(204).send();
         } catch (e) {
             res.status(500).send();
