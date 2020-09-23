@@ -1,26 +1,32 @@
 require("dotenv").config();
+import express, { json } from 'express';
 import cors, { CorsOptions } from 'cors';
-import express from 'express';
+import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
-import router from './urls';
+import { AppRouter } from './router';
+import './controllers/AuthController';
+
+const controllerRouter = AppRouter.getInstance();
+
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
 
 const app = express();
 const port = process.env.PORT;
 
-const corsWhitelist = ["http://localhost", "http://api.localhost"];
+const corsWhitelist = ["https://siemanko", "https://api.siemanko"];
 
 var corsOptions: CorsOptions = {
-  origin: function (origin, callback) {
-    if (origin && corsWhitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: 'https://siemanko',
+  credentials: true,
+  preflightContinue: true,
 };
 
 app.use(cors(corsOptions));
-app.use(router);
+app.use(json());
+app.use(cookieParser());
+app.use(controllerRouter);
 
 mongoose
   .connect(`mongodb://db:27017`, {
@@ -38,5 +44,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at https://siemanko:${port}`);
 });
