@@ -7,6 +7,7 @@ services:
       - 8000
     volumes: 
       - ./backend:/home/app/backend
+      - /home/app/backend/node_modules
       - static_volume:/home/app/backend/staticfiles
       - media_volume:/home/app/backend/media
     command: ['npm', 'start']
